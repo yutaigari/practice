@@ -13,3 +13,15 @@ aa = []
   aa << a
 end
 p aa
+
+def caluculate()
+ p "caluculate"
+end
+
+def good()
+ p "good"
+end
+
+def hello()
+ p "hello"
+end
