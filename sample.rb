@@ -25,3 +25,7 @@ end
 def hello()
  p "hello"
 end
+
+def conflict1()
+  puts "hello"
+end
