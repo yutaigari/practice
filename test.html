@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id="ajaxButton" type="button">要求を実行</button>
+
+  <script>
+    (function() {
+
+      var httpRequest;
+      document.getElementById("ajaxButton").addEventListener('click', makeRequest);
+
+      function makeRequest() {
+        httpRequest = new XMLHttpRequest();
+
+        if (!httpRequest) {
+          alert('中断 :( XMLHTTP インスタンスを生成できませんでした');
+          return false;
+        }
+        httpRequest.onreadystatechange = alertContents;
+        httpRequest.open('GET', 'test.html');
+        httpRequest.send();
+      }
+
+      function alertContents() {
+        try {
+          if (httpRequest.readyState === XMLHttpRequest.DONE) {
+            if (httpRequest.status === 200) {
+              alert(httpRequest.responseText);
+            } else {
+              alert('リクエストに問題が発生しました');
+            }
+          }
+        }
+        catch(e) {
+          alert('例外を捕捉: ' + e.description);
+        }
+      }
+
+    })();
+  </script>
+  <script type ="text/javascript" src="form_ajax.js"></script>
+</body>
+</html>
